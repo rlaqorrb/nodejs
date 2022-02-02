@@ -1,0 +1,24 @@
+.container{
+  margin-top: 100px;
+}
+
+.title{
+  font-weight: 900;
+}
+
+.todo{
+  margin: 10px 0px 10px 0px;
+}
+
+.detail{
+  margin: 10px 0px 10px 0px;
+}
+
+input{
+  width: 100%;
+  height: 50px;
+}
+
+p{
+  margin-bottom: 0;
+}
