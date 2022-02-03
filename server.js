@@ -19,8 +19,8 @@ MongoClient.connect('mongodb+srv://a12314:rlatpdms0911@cluster0.yxtdl.mongodb.ne
       // res.send('전송완료')
       res.sendFile(__dirname + '/HTML/index.html')
 
-      console.log(qus.body.title);
-      console.log(qus.body.date);
+      // console.log(qus.body.title);
+      // console.log(qus.body.date);
 
       db.collection('post').insertOne({제목: qus.body.title, 날짜 : qus.body.date}, function(에러, 결과){
         console.log('저장완료');
@@ -47,10 +47,14 @@ app.get('/CSS/write.css', function(qus, res){
   res.sendFile(__dirname + '/CSS/write.css')
 });
 
+app.get('/CSS/index.css', function(qus, res){
+  res.sendFile(__dirname + '/CSS/index.css')
+});
+
 app.get('/list', function(qus, res){
 
   db.collection('post').find().toArray(function(에러, 결과){
-    console.log(결과);
+    // console.log(결과);
     res.render('list.ejs', {posts : 결과});
   });
 
