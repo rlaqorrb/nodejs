@@ -21,9 +21,16 @@ MongoClient.connect('mongodb+srv://a12314:rlatpdms0911@cluster0.yxtdl.mongodb.ne
 
       // console.log(qus.body.title);
       // console.log(qus.body.date);
+      db.collection('counter').findOne({name : '게시물갯수'}, function(에러, 결과){
+        console.log(결과.totalPost);
+        var 총게시물갯수 = 결과.totalPost;
 
-      db.collection('post').insertOne({제목: qus.body.title, 날짜 : qus.body.date}, function(에러, 결과){
-        console.log('저장완료');
+        db.collection('post').insertOne({_id: 총게시물갯수 + 1, 제목: qus.body.title, 날짜 : qus.body.date}, function(에러, 결과){
+          console.log('저장완료');
+          db.collection('counter').updateOne({name : '게시물갯수'},{ $inc : {totalPost:1} },function(에러, 결과){
+            if(에러){return console.log(에러)}
+          })
+        });
       });
     });
 
